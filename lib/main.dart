@@ -4,6 +4,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:text_recognition_flutter/home_screen.dart';
 import 'package:text_recognition_flutter/result_screen.dart';
 
 void main() {
@@ -13,14 +14,15 @@ void main() {
 class App extends StatelessWidget {
   const App({super.key});
 
-  @override
+ @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Text Recognition Flutter',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const HomeScreen(), // Changed from MainScreen to HomeScreen
     );
   }
 }
