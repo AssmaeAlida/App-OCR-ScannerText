@@ -22,7 +22,7 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
         useMaterial3: true,
       ),
-      home: const HomeScreen(), // Changed from MainScreen to HomeScreen
+      home: const HomeScreen(), 
     );
   }
 }
@@ -95,7 +95,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
               ),
             Scaffold(
               appBar: AppBar(
-                title: const Text('Text Recognition Sample'),
+                title: const Text('Text Recognition '),
               ),
               backgroundColor: _isPermissionGranted ? Colors.transparent : null,
               body: _isPermissionGranted

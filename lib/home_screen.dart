@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:text_recognition_flutter/document_scan_screen.dart';
 import 'package:text_recognition_flutter/main.dart';
+import 'main.dart'; 
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -15,6 +17,8 @@ class HomeScreen extends StatelessWidget {
               _buildHeader(),
               _buildFeatureCards(),
               _buildStartButton(context),
+             _buildDocumentScanButton(context),
+
             ],
           ),
         ),
@@ -91,29 +95,79 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+ButtonStyle _buttonStyle() {
+  return ElevatedButton.styleFrom(
+    padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
+    shape: RoundedRectangleBorder(
+      borderRadius: BorderRadius.circular(30),
+    ),
+    elevation: 5,
+    backgroundColor: Colors.white,
+    shadowColor: Colors.blue.withOpacity(0.3),
+  );
+}
 
-  Widget _buildStartButton(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
+Widget _buildStartButton(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    child: Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        gradient: LinearGradient(
+          colors: [Colors.blue.withOpacity(0.1), Colors.white],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
       child: ElevatedButton(
         onPressed: () => Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => const MainScreen()),
         ),
-        style: ElevatedButton.styleFrom(
-          padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30),
-          ),
-        ),
+        style: _buttonStyle(),
         child: const Text(
-          'Start Scanning', 
+          'Extract Text',
           style: TextStyle(
             fontSize: 18,
             color: Colors.blue,
-          )
-        ),    
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
     ),
-    );
-  }
+  );
+}
+
+Widget _buildDocumentScanButton(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    child: Container(
+      width: double.infinity,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(30),
+        gradient: LinearGradient(
+          colors: [Colors.blue.withOpacity(0.1), Colors.white],
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+        ),
+      ),
+      child: ElevatedButton(
+        onPressed: () => Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const DocumentScanScreen()),
+        ),
+        style: _buttonStyle(),
+        child: const Text(
+          'Scan to PDF',
+          style: TextStyle(
+            fontSize: 18,
+            color: Colors.blue,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    ),
+  );
+}
 }
